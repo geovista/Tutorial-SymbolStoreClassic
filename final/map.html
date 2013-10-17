@@ -1,0 +1,81 @@
+<!--
+    Author:     Ryan S Mullins (RyanMullins@psu.edu)
+    POC:        Dr Alan M MacEachren (maceachren@psu.edu)
+    Version:    1.0
+    Created:    17 Oct 2013
+    Updated:    17 Oct 2013
+ -->
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- Metadata -->
+    
+    <title>SymbolStore: Making Your Own Web Map</title>
+    <meta name="author" content="GeoVISTA Center, The Pennsylvania State University" />
+    <meta name="keywords" content="symbolstore,geovista" />
+    <meta charset="UTF-8" />
+
+    <!-- External libraries and Styles -->
+
+    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.6.4/leaflet.css" />
+    <!--[if lte IE 8]>
+        <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.6.4/leaflet.ie.css" />
+    <![endif]-->
+    <script src="http://cdn.leafletjs.com/leaflet-0.6.4/leaflet.js"></script>
+    <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+
+    <!-- GeoVISTA libraries and Styles -->
+
+    <link rel="stylesheet" type="text/css" href="styles/default.css" />
+</head>
+<body>
+    <div id="title">
+        <h1>10 Things to do on PSU Homecoming Weekend</h1>
+    </div>
+    <div id="map"></div>
+    <script type="text/javascript">
+        // ---- Map ----
+        
+        var map = L.map('map', {
+            'center' : [40.802139, -77.8611974],
+            'zoom' : 14,
+            'maxZoom' : 18,
+            'minZoom' : 14,
+            'maxBounds' : new L.LatLngBounds(
+                new L.LatLng(40.78262115769851, -77.88697242736815), 
+                new L.LatLng(40.82160395916235, -77.83547401428223))
+        });
+
+        // ---- Tiles for Base Map ----
+
+        L.tileLayer('http://acetate.geoiq.com/tiles/acetate-hillshading/{z}/{x}/{y}.png', {
+           attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery &copy; <a href="http://FortiusOne.com">FortiusOne</a> and <a href="http://stamen.com">Stamen</a>',
+           maxZoom: 18
+        }).addTo(map);
+
+        // ---- Load and Display the Data ----
+
+        $.getJSON('data/data.json', function (data) {
+            L.geoJson(data, {
+                'onEachFeature' : function (feature, layer) {
+                    layer.bindPopup(
+                        "<b>" + feature.properties.name + "</b><br/>" +
+                        "Rank &ndash; " + feature.properties.rank + "<br/>" +
+                        "Description &ndash; " + feature.properties.description);
+                }, 
+                'pointToLayer' : function (feature, latlng) {
+                    return L.marker(
+                        latlng,
+                        {
+                            icon: L.icon({
+                                iconUrl: feature.properties.symbol,
+                                iconSize: [20,20]
+                            }),
+                            title: feature.properties.name
+                        });
+                }
+            }).addTo(map);
+        });
+    </script>
+</body>
+</html>

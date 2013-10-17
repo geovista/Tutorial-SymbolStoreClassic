@@ -1,0 +1,135 @@
+{
+    "type"     : "FeatureCollection",
+    "features" : [
+        {
+            "type"       : "Feature",
+            "geometry"   : {
+                "type"        : "Point",
+                "coordinates" : [-77.8533986, 40.8118233]
+            },
+            "properties" : {
+                "name"        : "Nittany Lion Football at Beaver Stadium",
+                "rank"        : 1,
+                "description" : "The Greatest Show on Earth!",
+                "symbol"      : "images/American_Football_100.png"
+            }
+        },
+        {
+            "type"       : "Feature",
+            "geometry"   : {
+                "type"        : "Point",
+                "coordinates" : [-77.869403, 40.797002]
+            },
+            "properties" : {
+                "name"        : "Lion Shrine",
+                "rank"        : 2,
+                "description" : "The most photographed location at Penn State. The area around the shrine was remodeled in the summer of 2013.",
+                "symbol"      : "images/Monument_100.png"
+            }
+        },
+        {
+            "type"       : "Feature",
+            "geometry"   : {
+                "type"        : "Point",
+                "coordinates" : [-77.8627407, 40.7959626]
+            },
+            "properties" : {
+                "name"        : "Old Main",
+                "rank"        : 3,
+                "description" : "Home to the Office of the President and most picturesque lawn on campus.",
+                "symbol"      : "images/College_100.png"
+            }
+        },
+        {
+            "type"       : "Feature",
+            "geometry"   : {
+                "type"        : "Point",
+                "coordinates" : [-77.8598063, 40.7953621]
+            },
+            "properties" : {
+                "name"        : "Dinner at the Tavern",
+                "rank"        : 4,
+                "description" : "A State College landmark, try the veal.",
+                "symbol"      : "images/Restaurant_100.png"
+            }
+        },
+        {
+            "type"       : "Feature",
+            "geometry"   : {
+                "type"        : "Point",
+                "coordinates" : [-77.8613607, 40.7943712]
+            },
+            "properties" : {
+                "name"        : "Lunch at the Corner Room",
+                "rank"        : 5,
+                "description" : "The iconic diner on the corner of College and Allen.",
+                "symbol"      : "images/Restaurant_100.png"
+            }
+        },
+        {
+            "type"       : "Feature",
+            "geometry"   : {
+                "type"        : "Point",
+                "coordinates" : [-77.8568999, 40.7975599]
+            },
+            "properties" : {
+                "name"        : "Breakfast at the Waffle Shop",
+                "rank"        : 6,
+                "description" : "The Waffle Shop. Get there early or you'll be in line in front of the Student Book Store.",
+                "symbol"      : "images/Restaurant_100.png"
+            }
+        },
+        {
+            "type"       : "Feature",
+            "geometry"   : {
+                "type"        : "Point",
+                "coordinates" : [-77.8616021, 40.7945545]
+            },
+            "properties" : {
+                "name"        : "Homecoming Parade",
+                "rank"        : 7,
+                "description" : "Watch the homecoming parade from anywhere along the <a href='http://homecoming.psu.edu/about/parade-route'>parade route</a>, thought the best location is along College Ave. between Pugh St. and Allen St.",
+                "symbol"      : "images/Star_Solid_100.png"
+            }
+        },
+        {
+            "type"       : "Feature",
+            "geometry"   : {
+                "type"        : "Point",
+                "coordinates" : [-77.8572956, 40.7971985]
+            },
+            "properties" : {
+                "name"        : "Pre- and Post-game Show at the Student Book Store",
+                "rank"        : 8,
+                "description" : "Join Steve Jones, Jack Ham, the Nittany Lion, and more in front of the Student Book Store for per- and post-game coverage of Penn State Football.",
+                "symbol"      : "images/Star_Solid_100.png"
+            }
+        },
+        {
+            "type"       : "Feature",
+            "geometry"   : {
+                "type"        : "Point",
+                "coordinates" : [-77.8630544, 40.8084097]
+            },
+            "properties" : {
+                "name"        : "Tailgating",
+                "rank"        : 9,
+                "description" : "Perhaps the most important part of a game. Make sure to share either games, drinks, or food with your neighbors.",
+                "symbol"      : "images/Beer_100.png"
+            }
+        },
+        {
+            "type"       : "Feature",
+            "geometry"   : {
+                "type"        : "Point",
+                "coordinates" : [-77.8629803, 40.793886]
+            },
+            "properties" : {
+                "name"        : "Celebrate the Win",
+                "rank"        : 10,
+                "description" : "Cafe 210, Zenos, or the Rathskeller. No matter where you go there will be a party.",
+                "symbol"      : "images/Bar_100.png"
+            }
+        }
+    ]
+}
