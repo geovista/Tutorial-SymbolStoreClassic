@@ -170,7 +170,7 @@ After you finish adding your symbols to your cart, you need to tell the SymbolSt
 
 After the archive is ready for download the "Download" button will be enabled (see Figure 4). Click that and the archive will be saved to your computer. 
 
-![Figure 4. Download the symbols](./images/Donwload.png)
+![Figure 4. Download the symbols](./images/Download.png)
 
 Unzip the archive you just downloaded, it's time to go exploring and move some things around. Inside the extracted folder you will find two other directories &ndash; "image" and "svg" &ndash; and the Esri Style File. In this tutorial you'll use the PNG images, so open up that directory. You'll see that the images are separated by origin set (Maki, DHS, FEMA, etc.) and inside those folder you are provided with square symbols in four sizes &ndash; 16px, 32xp, 64px, 100px. Select all the 100px images and copy those into the _src/images_ folder in your tutorial workspace. At this point you can either delete this download or keep it around, but we will not be coming back to it. 
 
