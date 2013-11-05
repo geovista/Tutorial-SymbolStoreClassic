@@ -7,27 +7,25 @@ The Pennsylvania State University
 
 # Background
 
-The [SymbolStore](http://symbolstore.org) is an online repository of some 2300 symbols (and growing) that can be and are used to represent point features on maps, among other uses. This tutorial is designed to show you, as a map maker, how to use the SymbolStore to create a self-hosted or otherwise stand-alone web map.
+The [SymbolStore](http://symbolstore.org) is an online repository of some 2300 symbols (and growing) that are used to represent point features on maps, among other uses. This tutorial is designed to show you, as a map maker, how to use the SymbolStore to create a privately hosted web map on a server you control or own.
 
 ### Required Skills and Tools
 
-There are several skills and tools that you will need to complete this tutorial. 
+This tutorial is designed for people who are familiar with web development, and assumes that you have experience using web maps and some experience developing web sites/applications. A more complete list of required skills and tools is provided below. 
 
 **Skills**
 
-* Experience with web maps (e.g. [Google Maps](http://maps.google.com) or [Open Street Map](http://osm.org))
-* Some experience with [HTML](http://en.wikipedia.org/wiki/Html)
-* Some experience with [JavaScript](http://en.wikipedia.org/wiki/JavaScript)
-* Some experience with the [Leaflet.js](http://leaflet.com) mapping library
-* Some knowledge of [HTTP](http://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol) requests and [RESTful APIs](http://en.wikipedia.org/wiki/RESTful)
-* Some knowledge of the [GeoJSON data specification](http://geojson.org/geojson-spec.html) 
+* Experience using web maps (e.g. [Google Maps](http://maps.google.com) or [Open Street Map](http://osm.org))
+* Some experience with  web development technologies, including [HTML](http://en.wikipedia.org/wiki/Html), [JavaScript](http://en.wikipedia.org/wiki/JavaScript), and [CSS](http://en.wikipedia.org/wiki/Cascading_Style_Sheets)
+* Some knowledge of the JSON data format, specifically the [GeoJSON](http://geojson.org/geojson-spec.html) specification
+* (Optional) Some experience developing with the [Leaflet.js](http://leaflet.com) mapping library
 
 **Tools** 
 
-* A text editor &mdash; Everybody likes there own editor for [different reasons](http://xkcd.com/378/), so if you have a thing for `vim` or `emacs` or something else go right ahead and use it. If you have yet to find a text editor of your own, I suggest trying out [Sublime Text](www.sublimetext.com). 
-* A browser &mdash; I like to use [Chrome](http://www.google.com/chrome), you may prefer [Firefox](http://www.mozilla.org/firefox) or [Safari](http://www.apple.com/safari/). All I ask is that you don't use Internet Explorer; I don't use it, I didn't test this on it, and I make no promises that any of this will work if you do.
-* [Git](https://help.github.com/articles/set-up-git) (optional) &mdash; A popular revision control system and the reason for GitHub, if you haven't installed it already now would be a good time.
-* A web server (optional) &mdash; You don't really need this for the tutorial I present here, but if you want to use an [Apache](http://httpd.apache.org/) or [nginx](http://wiki.nginx.org/Main) server during your development process it won't hurt. 
+* A text editor &mdash; Everybody likes their own editor for [different reasons](http://xkcd.com/378/), so please use whatever you are comfortable with. If you have yet to find a text editor of your own, I suggest trying out [Sublime Text](www.sublimetext.com). 
+* A browser &mdash; I like to use [Chrome](http://www.google.com/chrome), you may prefer [Firefox](http://www.mozilla.org/firefox) or [Safari](http://www.apple.com/safari/). Internet Explorer can also be used, but be aware that some libraries used in this tutorial do not work well in older versions (< IE 9/10).
+* Git (optional) &mdash; A popular revision control system and the reason for GitHub, if you haven't installed it already [now would be a good time](https://help.github.com/articles/set-up-git).
+* A web server (optional) &mdash; You don't really need this for the tutorial I present here, but if you want to use an [Apache](http://httpd.apache.org/) or [Nginx](http://wiki.nginx.org/Main) server during your development process it won't hurt. 
 
 
 
@@ -59,7 +57,7 @@ The _src_ directory is a workspace I have created for you. Inside this directory
 
 ### The Map
 
-The _map.html_ file is the page that will display the map you are looking to make. Since the focus of this demo isn't as much on writing JavaScript to make a map as it is on using the SYmbolStore to customize your map's symbology, I have provided the complete, working code to get a map on the page. Let's take a quick look at the body of the _map.html_ file, listed below. 
+The _map.html_ file is the page that will display the map you are looking to make. I have provided the complete, working code to get a map on the page, that way we can focus more on customizing the map's symbology. Let's take a quick look at the body of the _map.html_ file, listed below. 
 
 ```HTML
 <body>
@@ -120,9 +118,9 @@ This script is broken into three sections &mdash; making a map, adding tiles to 
 
 In the first section, I use the Leaflet Map function to create a map in the map `div`. I limit this map's extents to an area over State College, PA and University Park, PA. I also limit and set the zoom level so that the user can't get lost. 
 
-In the next section I create a tile layer that will be the base map for this application. These tiles were designed by fine folks at [GeoIQ](http://www.geoiq.com) as part of their Acetate line of analytical products. They are a nice set of simple tiles that look good with a variety of symbol types. Of course, if you have a favorite set feel free to swap them out. 
+In the next section I create a tile layer that will be the base map for this application. These tiles were designed by [GeoIQ](http://www.geoiq.com) as part of their Acetate line of analytical products. They are a nice set of simple tiles that look good with a variety of symbol types. Of course, if you have a favorite set feel free to swap them out. 
 
-The last section is where the meat and potatoes are. I use the [jQuery](http://jquery.com) library's `getJSON` function to load in a static GeoJSON file from the _data_ directory. Once this file is loaded it is passed to the Leaflet.js library's `geoJson` function, which parses this data and adds the features to the map. I also use two options in this function to customize the appearance of these features. The first option, `onEachFeature`, allows me to give each of these features a custom pop-up (displayed on click) that has the name of the location and a brief description of what a person can do there. The second option, `pointToLayer`, is where I define the custom Markers for these features. Inside this function I return a new Leaflet Marker with a custom defined Icon using links to symbols I provide with the data. 
+In the last section, I use the [jQuery](http://jquery.com) library's `getJSON` function to load in a static GeoJSON file from the _data_ directory. Once this file is loaded it is passed to the Leaflet.js library's `geoJson` function, which parses this data and adds the features to the map. I also use two options in this function to customize the appearance of these features. The first option, `onEachFeature`, allows me to give each of these features a custom pop-up (displayed on click) that has the name of the location and a brief description of what a person can do there. The second option, `pointToLayer`, is where I define the custom Markers for these features. Inside this function I return a new Leaflet Marker with a custom defined Icon using links to symbols I provide with the data. 
 
 And speaking of data...
 
@@ -172,7 +170,7 @@ After the archive is ready for download the "Download" button will be enabled (s
 
 ![Figure 4. Download the symbols](./images/Download.png)
 
-Unzip the archive you just downloaded, it's time to go exploring and move some things around. Inside the extracted folder you will find two other directories &ndash; "image" and "svg" &ndash; and the Esri Style File. In this tutorial you'll use the PNG images, so open up that directory. You'll see that the images are separated by origin set (Maki, DHS, FEMA, etc.) and inside those folder you are provided with square symbols in four sizes &ndash; 16px, 32xp, 64px, 100px. Select all the 100px images and copy those into the _src/images_ folder in your tutorial workspace. At this point you can either delete this download or keep it around, but we will not be coming back to it. 
+Unzip the archive you just downloaded, it's time to go exploring and move some things around. Inside the extracted folder you will find two other directories &ndash; "image" and "svg" &ndash; and the Esri Style File. In this tutorial you'll use the PNG images, so open up that directory. You'll see that the images are separated by origin set (Maki, DHS, FEMA, etc.) and inside those folder you are provided with square symbols in four sizes &ndash; 16px, 32xp, 64px, 100px. Select all the 100px images and copy those into the _src/images_ folder in your tutorial workspace. At this point you can either delete this download or keep it around, but we will not be coming back to it in this tutorial.
 
 ## Step 3: Altering the Data
 
